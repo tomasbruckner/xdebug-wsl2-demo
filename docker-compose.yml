@@ -1,0 +1,13 @@
+version: '3.7'
+
+services:
+  symfony:
+    build: ./docker/php
+    command: sh -c 'apache2-foreground'
+    environment:
+      - WSLIP=${WSLIP:?err}
+    volumes:
+      - ./:/var/www/html
+    ports:
+      - 9005
+      - 127.0.0.1:8000:80
